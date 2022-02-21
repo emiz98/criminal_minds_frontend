@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_police_app/widgets/AppHeader.dart';
 import 'package:flutter_police_app/widgets/SingleInvestigationWidget.dart';
@@ -23,11 +22,11 @@ class AllInvestigations extends StatelessWidget {
                 AppHeader(
                   title: "All Investigations",
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 SortInvestigation(),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Expanded(

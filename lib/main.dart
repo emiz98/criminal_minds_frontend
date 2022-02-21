@@ -1,7 +1,6 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
-import 'package:flutter_police_app/pages/root_app.dart';
 import 'package:flutter_police_app/pages/recent_investigations.dart';
 import 'package:flutter_police_app/pages/login/login_screen.dart';
 import 'package:flutter_police_app/pages/splash_screen/splash.dart';
@@ -20,7 +19,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Criminal Minds',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(),
+      theme: ThemeData(
+        brightness: Brightness.light,
+      ),
       home: SafeArea(
         child: DefaultTextStyle(
           style: GoogleFonts.montserrat(

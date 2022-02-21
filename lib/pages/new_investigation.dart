@@ -42,19 +42,19 @@ class _NewInvestigationState extends State<NewInvestigation> {
                           labelText: 'Investigation Name',
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Select a network",
+                          const Text("Select a network",
                               style: TextStyle(fontSize: 18)),
                           Container(
                             width: 200,
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(5),
                                 border: Border.all(
                                     color: Colors.black38, width: 2)),
                             child: DropdownButtonHideUnderline(
@@ -87,7 +87,7 @@ class _NewInvestigationState extends State<NewInvestigation> {
                           ),
                           onPressed: () => {},
                           icon: Icon(Icons.drive_folder_upload_rounded),
-                          label: Text(
+                          label: const Text(
                             "Upload Document",
                           )),
                       ElevatedButton(
@@ -95,11 +95,11 @@ class _NewInvestigationState extends State<NewInvestigation> {
                             minimumSize: Size(500, 45),
                             textStyle: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.w600),
-                            primary: Colors.red),
+                            primary: Color(0xFFc8210d)),
                         child: Text("Investigate"),
                         onPressed: () {},
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 100,
                       )
                     ],

@@ -8,17 +8,17 @@ class AppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
       children: [
         Align(
           alignment: Alignment.centerLeft,
-          heightFactor: 2,
           child: GestureDetector(
             onTap: () {
               Navigator.of(context).pop();
             },
             child: Icon(
               Icons.arrow_back,
-              size: 25,
+              size: 30,
               color: Colors.black,
             ),
           ),
