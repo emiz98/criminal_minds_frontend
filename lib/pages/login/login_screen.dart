@@ -5,6 +5,8 @@ import 'package:flutter_police_app/pages/login/components/Buttons/continue_butto
 import 'package:flutter_police_app/pages/login/components/rounded_input_field.dart';
 import 'package:flutter_police_app/pages/login/components/rounded_password_field.dart';
 import 'package:flutter_police_app/pages/splash_screen/splash.dart';
+import 'package:flutter_police_app/widgets/AppHeader.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LogIn_Screen extends StatelessWidget {
   const LogIn_Screen({Key? key}) : super(key: key);
@@ -25,113 +27,103 @@ class layout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return SizedBox(
-      height: size.height,
-      width: size.width,
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Column(
-          children: [
-            Container(
-              alignment: Alignment.topCenter,
-              child: Image.asset(
-                'assets/images/1.png',
-                height: 100,
-                width: 200,
-                fit: BoxFit.fitWidth,
-              ),
-            ),
-            Padding(
-              //Parent container for all content
-              padding: const EdgeInsets.only(top: 100),
-              child: Column(
-                children: [
-                  Container(
-                    alignment: Alignment.topLeft,
-                    padding: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Welcome back!",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,
-                      ),
+    return SafeArea(
+      child: DefaultTextStyle(
+        style:
+            GoogleFonts.montserrat(textStyle: TextStyle(color: Colors.black)),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: SizedBox(
+            height: size.height,
+            width: size.width,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppHeader(title: ""),
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Welcome back!",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,
+                              ),
+                            ),
+                            Text(
+                              "Sign in to your account",
+                              style: TextStyle(
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    padding: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "Sign in to your account",
-                      style: TextStyle(
-                        fontSize: 13,
-                      ),
+                    SizedBox(
+                      height: 30,
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 20.0, right: 20.0, top: 40.0),
-              child: RoundedInputField(
-                hintText: "Email                user@gmail.com",
-                onChanged: (value) {},
-              ),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0),
-              child: RoundedPasswordField(
-                onChanged: (value) {},
-              ),
-            ),
-            Container(
-              alignment: Alignment.topRight,
-              padding: EdgeInsets.only(right: 20),
-              child: InkWell(
-                child: Text(
-                  "Forgot password ?",
-                  style: TextStyle(
-                    fontSize: 13,
-                  ),
+                    Column(
+                      children: [
+                        RoundedInputField(
+                          hintText: "Email",
+                          onChanged: (value) {},
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RoundedPasswordField(
+                          onChanged: (value) {},
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Forgot password ?",
+                              style: TextStyle(
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                onTap: () => {},
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 40),
-              child: Continue_Button(size: size),
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Don't have an account ?"),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: InkWell(
-                      child: Text(
-                        'Sign Up Now',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return Splash(); //Should redirect to main home page after login
-                          },
-                        ),
-                      ),
+                Column(
+                  children: [
+                    Continue_Button(size: size),
+                    SizedBox(
+                      height: 10,
                     ),
-                  ),
-                ],
-              ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Don't have an account ?"),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          'Sign Up Now',
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 100,
+                    )
+                  ],
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
