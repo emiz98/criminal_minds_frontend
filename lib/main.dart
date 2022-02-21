@@ -1,5 +1,8 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
-import 'package:flutter_police_app/pages/root_app.dart';
+import 'package:flutter_police_app/pages/login/login_screen.dart';
+import 'package:flutter_police_app/pages/splash_screen/splash.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -17,11 +20,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
       home: DefaultTextStyle(
-        style:
-            GoogleFonts.montserrat(textStyle: TextStyle(color: Colors.white)),
+        style: GoogleFonts.montserrat(
+            textStyle: const TextStyle(color: Colors.white)),
         child: Container(
           color: Colors.white,
-          child: const RootApp(),
+          child: const Splash(),
         ),
       ),
     );

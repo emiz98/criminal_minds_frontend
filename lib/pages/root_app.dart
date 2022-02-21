@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RootApp extends StatefulWidget {
@@ -18,7 +17,7 @@ class _RootAppState extends State<RootApp> {
           'assets/images/1.png',
           width: 200,
         ),
-        Text(
+        const Text(
           "Test Font",
           style: TextStyle(color: Colors.black),
         )
