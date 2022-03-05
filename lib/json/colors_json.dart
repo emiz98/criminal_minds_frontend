@@ -1,14 +1,11 @@
-// ignore_for_file: constant_identifier_names
-
 import 'package:flutter/material.dart';
 
-const List app_colors = [
-  {
-    "primary": Color(0xFF5B5B5B),
-    "secondary": Color(0xFFC2C2C2),
-  },
-  {
-    "primary": Color(0xFFc8210d),
-    "secondary": Color(0xFF000000),
-  }
-];
+const primary = Color(0xFFCB2815);
+const secondary = Color(0xFF787878);
+const secondary_shade = Color(0xFFC9C9C9);
+const white = Color(0xFFFFFFFF);
+const black = Color(0xFF000000);
+const outgoing = Color(0xFF00940A);
+const outgoing_shade = Color(0xFFC5FFD6);
+const incoming = Color(0xFFEF3722);
+const incoming_shade = Color(0xFFFFD1D1);
