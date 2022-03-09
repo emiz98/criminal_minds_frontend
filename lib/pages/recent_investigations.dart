@@ -19,10 +19,9 @@ class _RecentInvestigationsState extends State<RecentInvestigations> {
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: DefaultTextStyle(
-        style:
-            GoogleFonts.montserrat(textStyle: TextStyle(color: Colors.white)),
+        style: GoogleFonts.montserrat(textStyle: TextStyle(color: white)),
         child: Container(
-          color: Colors.white,
+          color: white,
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
             child: Column(
@@ -70,7 +69,7 @@ class _RecentInvestigationsState extends State<RecentInvestigations> {
                         style: ElevatedButton.styleFrom(
                             textStyle: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.w600),
-                            primary: Color(0xFFc8210d)),
+                            primary: primary),
                         child: Text("New Investigation"),
                       ),
                     ),

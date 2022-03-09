@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use, camel_case_types, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_police_app/json/colors_json.dart';
 import 'package:flutter_police_app/pages/login/login_screen.dart';
 import 'package:flutter_police_app/pages/recent_investigations.dart';
 
@@ -21,7 +22,7 @@ class Continue_Button extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         child: RaisedButton(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
-          color: Color(0xFFc8210d),
+          color: primary,
           onPressed: () {
             Navigator.push(
               context,

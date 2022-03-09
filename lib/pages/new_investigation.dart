@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_police_app/json/colors_json.dart';
 import 'package:flutter_police_app/widgets/AppHeader.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,7 +25,7 @@ class _NewInvestigationState extends State<NewInvestigation> {
         style:
             GoogleFonts.montserrat(textStyle: TextStyle(color: Colors.white)),
         child: Container(
-          color: Colors.white,
+          color: white,
           child: Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
             child: Scaffold(
@@ -95,7 +95,7 @@ class _NewInvestigationState extends State<NewInvestigation> {
                             minimumSize: Size(500, 45),
                             textStyle: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.w600),
-                            primary: Color(0xFFc8210d)),
+                            primary: primary),
                         child: Text("Investigate"),
                         onPressed: () {},
                       ),

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_police_app/pages/login/login_screen.dart';
+import 'package:flutter_police_app/json/colors_json.dart';
 
 class Login_Splash extends StatelessWidget {
   const Login_Splash({Key? key}) : super(key: key);
@@ -45,7 +46,7 @@ class splash_body extends StatelessWidget {
             style: ElevatedButton.styleFrom(
                 minimumSize: Size(500, 50),
                 textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                primary: Color(0xFFc8210d)),
+                primary: primary),
             child: Text("Log in with Email"),
             onPressed: () {
               Navigator.push(

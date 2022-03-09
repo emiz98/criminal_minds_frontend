@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_police_app/json/colors_json.dart';
 
 class SortInvestigation extends StatefulWidget {
   const SortInvestigation({Key? key}) : super(key: key);
@@ -14,8 +15,8 @@ class _SortInvestigationState extends State<SortInvestigation> {
       children: [
         Container(
           decoration: BoxDecoration(
-              border: Border.all(color: Color(0xFFc8210d)),
-              color: Color(0xFFc8210d),
+              border: Border.all(color: primary),
+              color: primary,
               borderRadius: const BorderRadius.all(Radius.circular(20))),
           child: const Padding(
             padding: EdgeInsets.only(left: 15, right: 15, top: 8, bottom: 8),
