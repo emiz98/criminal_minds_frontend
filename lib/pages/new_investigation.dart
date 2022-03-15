@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_police_app/json/colors_json.dart';
+import 'package:flutter_police_app/pages/active_investigation_home.dart';
+import 'package:flutter_police_app/pages/all_calls.dart';
 import 'package:flutter_police_app/widgets/AppHeader.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,7 +34,10 @@ class _NewInvestigationState extends State<NewInvestigation> {
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AppHeader(title: ""),
+                  AppHeader(
+                    title: "",
+                    includeSearch: false,
+                  ),
                   Column(
                     children: [
                       TextField(
@@ -97,7 +102,14 @@ class _NewInvestigationState extends State<NewInvestigation> {
                                 fontSize: 18, fontWeight: FontWeight.w600),
                             primary: primary),
                         child: Text("Investigate"),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ActiveInvestigationHome()),
+                          );
+                        },
                       ),
                       const SizedBox(
                         height: 100,

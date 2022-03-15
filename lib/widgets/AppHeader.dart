@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_police_app/pages/search.dart';
 
 class AppHeader extends StatelessWidget {
   final String title;
+  final bool includeSearch;
 
-  const AppHeader({Key? key, required this.title}) : super(key: key);
+  const AppHeader({Key? key, required this.title, required this.includeSearch})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,22 @@ class AppHeader extends StatelessWidget {
                     fontSize: 20),
               ),
           ],
-        )
+        ),
+        if (includeSearch == true)
+          Align(
+              alignment: Alignment.centerRight,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Search()),
+                  );
+                },
+                child: Icon(
+                  Icons.search,
+                  size: 30,
+                ),
+              ))
       ],
     );
   }

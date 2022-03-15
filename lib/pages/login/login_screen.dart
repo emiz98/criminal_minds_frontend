@@ -39,7 +39,10 @@ class layout extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppHeader(title: ""),
+                AppHeader(
+                  title: "",
+                  includeSearch: false,
+                ),
                 Column(
                   children: [
                     Row(

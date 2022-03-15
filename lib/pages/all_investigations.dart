@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_police_app/widgets/AppHeader.dart';
 import 'package:flutter_police_app/widgets/SingleInvestigationWidget.dart';
-import 'package:flutter_police_app/widgets/SortInvestigation.dart';
+import 'package:flutter_police_app/widgets/SortWidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AllInvestigations extends StatelessWidget {
@@ -11,8 +11,7 @@ class AllInvestigations extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: DefaultTextStyle(
-        style:
-            GoogleFonts.montserrat(textStyle: TextStyle(color: Colors.white)),
+        style: GoogleFonts.montserrat(),
         child: Container(
           color: Colors.white,
           child: Padding(
@@ -21,11 +20,17 @@ class AllInvestigations extends StatelessWidget {
               children: [
                 AppHeader(
                   title: "All Investigations",
+                  includeSearch: false,
                 ),
                 const SizedBox(
                   height: 30,
                 ),
-                SortInvestigation(),
+                Row(
+                  children: [
+                    SortWidget(
+                        text1: "Name", text2: "Network", text3: "Date & Time"),
+                  ],
+                ),
                 const SizedBox(
                   height: 30,
                 ),

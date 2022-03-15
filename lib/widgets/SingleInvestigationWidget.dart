@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_police_app/json/colors_json.dart';
 
 class SingleInvestigationWidget extends StatelessWidget {
   final String title;
@@ -18,10 +19,12 @@ class SingleInvestigationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 5),
+      padding: const EdgeInsets.only(bottom: 6),
       child: Container(
+        height: 70,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.black26.withOpacity(0.2)),
+            color: black.withOpacity(0.1),
             // boxShadow: [
             //   BoxShadow(
             //     color: Colors.black38,
@@ -33,18 +36,19 @@ class SingleInvestigationWidget extends StatelessWidget {
             //     ),
             //   )
             // ],
-            gradient: LinearGradient(colors: [
-              if (network == 1) Colors.blue.shade300,
-              if (network == 2) Colors.pink.shade300,
-              if (network == 3) Colors.orange.shade400,
-              if (network == 4) Colors.red.shade300,
-              Colors.white,
-            ]),
+            // gradient: LinearGradient(colors: [
+            //   if (network == 1) Colors.blue.shade300,
+            //   if (network == 2) Colors.pink.shade300,
+            //   if (network == 3) Colors.orange.shade400,
+            //   if (network == 4) Colors.red.shade300,
+            //   Colors.white,
+            // ]),
             borderRadius: BorderRadius.all(Radius.circular(10))),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
