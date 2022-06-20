@@ -6,12 +6,24 @@ import 'package:flutter_police_app/pages/active_inv_single.dart';
 // (2)-Duration
 // (3)-Date & Time
 
-// (1)-Outgoing
-// (2)-Incoming
+// (0)-Outgoing
+// (1)-Incoming
 class SingleCall extends StatefulWidget {
   final int WidgetType;
   final int callType;
-  const SingleCall({Key? key, required this.WidgetType, required this.callType})
+  final String number;
+  final int count;
+  final int duration;
+  final String date_time;
+
+  const SingleCall(
+      {Key? key,
+      required this.WidgetType,
+      required this.callType,
+      required this.number,
+      required this.count,
+      required this.duration,
+      required this.date_time})
       : super(key: key);
 
   @override
@@ -22,16 +34,13 @@ class _SingleCallState extends State<SingleCall> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ActiveInvSingle()));
-      },
+      onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              widget.callType == 1 ? outgoing_shade : incoming_shade,
-              white
-            ]),
+            // gradient: LinearGradient(colors: [
+            //   widget.callType == 1 ? outgoing_shade : incoming_shade,
+            //   white
+            // ]),
             borderRadius: BorderRadius.circular(5),
             border: Border.all(width: 1, color: secondary_shade)),
         child: Padding(
@@ -49,24 +58,24 @@ class _SingleCallState extends State<SingleCall> {
                       height: 25,
                       alignment: Alignment.center,
                       child: Text(
-                        "9",
+                        widget.count.toString(),
                         style: TextStyle(
-                            color: widget.callType == 1 ? outgoing : incoming,
+                            color: widget.callType == 0 ? outgoing : incoming,
                             fontSize: 15,
                             fontWeight: FontWeight.bold),
                       ),
                       decoration: BoxDecoration(
                           border: Border.all(
-                              color: widget.callType == 1 ? outgoing : incoming,
+                              color: widget.callType == 0 ? outgoing : incoming,
                               width: 2),
                           color: white,
                           shape: BoxShape.circle),
                     ),
                   Icon(
-                    widget.callType == 1
+                    widget.callType == 0
                         ? Icons.call_missed_outgoing
                         : Icons.call_missed,
-                    color: widget.callType == 1 ? outgoing : incoming,
+                    color: widget.callType == 0 ? outgoing : incoming,
                     size: 35,
                   ),
                   SizedBox(
@@ -76,9 +85,9 @@ class _SingleCallState extends State<SingleCall> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "076 222 3333",
+                        widget.number,
                         style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.w600),
+                            fontSize: 22, fontWeight: FontWeight.w500),
                       ),
                       if (widget.WidgetType == 1)
                         Row(
@@ -89,7 +98,20 @@ class _SingleCallState extends State<SingleCall> {
                               size: 16,
                             ),
                             SizedBox(width: 3),
-                            Text("Total Duration (15s)",
+                            Text("Total Duration (",
+                                style:
+                                    TextStyle(color: secondary, fontSize: 12)),
+                            Text(
+                                widget.duration > 60
+                                    ? (widget.duration / 60)
+                                            .round()
+                                            .toString() +
+                                        "m " +
+                                        (widget.duration % 60)
+                                            .round()
+                                            .toString() +
+                                        "s)"
+                                    : widget.duration.toString() + "s)",
                                 style:
                                     TextStyle(color: secondary, fontSize: 12))
                           ],
@@ -97,18 +119,26 @@ class _SingleCallState extends State<SingleCall> {
                       if (widget.WidgetType == 2)
                         Row(
                           children: [
-                            Text(
-                              "IDH Junction",
-                              style: TextStyle(color: secondary),
-                            ),
-                            SizedBox(width: 10),
                             Icon(
                               Icons.timer_outlined,
                               color: secondary,
                               size: 16,
                             ),
                             SizedBox(width: 2),
-                            Text("15s",
+                            Text("Duration (",
+                                style:
+                                    TextStyle(color: secondary, fontSize: 12)),
+                            Text(
+                                widget.duration > 60
+                                    ? (widget.duration / 60)
+                                            .round()
+                                            .toString() +
+                                        "m " +
+                                        (widget.duration % 60)
+                                            .round()
+                                            .toString() +
+                                        "s)"
+                                    : widget.duration.toString() + "s)",
                                 style:
                                     TextStyle(color: secondary, fontSize: 12))
                           ],
@@ -117,50 +147,50 @@ class _SingleCallState extends State<SingleCall> {
                   ),
                 ],
               ),
-              if (widget.WidgetType == 2)
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.calendar_month_outlined,
-                          color: secondary,
-                          size: 15,
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          "2021-10-21",
-                          style: TextStyle(color: secondary, fontSize: 12),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.timer_outlined,
-                          color: secondary,
-                          size: 15,
-                        ),
-                        SizedBox(
-                          width: 2,
-                        ),
-                        Text(
-                          "2021-10-21",
-                          style: TextStyle(color: secondary, fontSize: 12),
-                        )
-                      ],
-                    )
-                  ],
+              if (widget.WidgetType == 3)
+                Padding(
+                  padding: const EdgeInsets.all(3),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_month_outlined,
+                            color: secondary,
+                            size: 15,
+                          ),
+                          SizedBox(
+                            width: 2,
+                          ),
+                          Text(
+                            widget.date_time.substring(0, 10),
+                            style: TextStyle(color: secondary, fontSize: 12),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.timer_outlined,
+                            color: secondary,
+                            size: 15,
+                          ),
+                          SizedBox(
+                            width: 2,
+                          ),
+                          Text(
+                            widget.date_time.substring(11, 19),
+                            style: TextStyle(color: secondary, fontSize: 12),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-              // Icon(
-              //   Icons.more_vert,
-              //   color: secondary,
-              // )
             ],
           ),
         ),

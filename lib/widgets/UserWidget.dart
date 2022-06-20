@@ -11,35 +11,31 @@ class UserWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(
-          'assets/images/user.png',
-          scale: 0.9,
-        ),
         Container(
             height: 30,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (networkId == 1)
+                if (networkId == 0)
                   Image.asset(
                     'assets/images/mobitel_logo.png',
                   ),
-                if (networkId == 2)
+                if (networkId == 1)
                   Image.asset(
                     'assets/images/dialog_logo.png',
+                  ),
+                if (networkId == 2)
+                  Image.asset(
+                    'assets/images/airtel_logo.png',
                   ),
                 if (networkId == 3)
                   Image.asset(
                     'assets/images/hutch_logo.png',
                   ),
-                if (networkId == 4)
-                  Image.asset(
-                    'assets/images/airtel_logo.png',
-                  ),
               ],
             )),
         SizedBox(
-          height: 5,
+          height: 10,
         ),
         Text(
           number,

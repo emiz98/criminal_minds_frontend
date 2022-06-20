@@ -2,26 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_police_app/json/colors_json.dart';
 import 'package:flutter_police_app/pages/all_calls.dart';
 import 'package:flutter_police_app/widgets/SingleCall.dart';
+import 'package:lottie/lottie.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class CallsWidget extends StatefulWidget {
-  const CallsWidget({Key? key}) : super(key: key);
+  final String investigationName;
+  final String investigationId;
+  final List outgoing;
+  final List incoming;
+  const CallsWidget(
+      {Key? key,
+      required this.investigationName,
+      required this.investigationId,
+      required this.outgoing,
+      required this.incoming})
+      : super(key: key);
 
   @override
   State<CallsWidget> createState() => _CallsWidgetState();
 }
 
 class _CallsWidgetState extends State<CallsWidget> {
+  var _toggleIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Column(
       children: [
         ToggleSwitch(
           borderColor: [black.withOpacity(0.2)],
           borderWidth: 1,
           minWidth: MediaQuery.of(context).size.width - 220,
-          initialLabelIndex: 0,
+          initialLabelIndex: _toggleIndex,
           cornerRadius: 5,
           activeFgColor: black,
           inactiveBgColor: white,
@@ -49,7 +61,9 @@ class _CallsWidgetState extends State<CallsWidget> {
             [Colors.red.withOpacity(0.5)]
           ],
           onToggle: (index) {
-            print('switched to: $index');
+            setState(() {
+              _toggleIndex = index!;
+            });
           },
         ),
         SizedBox(
@@ -58,15 +72,25 @@ class _CallsWidgetState extends State<CallsWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Most Incoming",
-              style: TextStyle(color: Colors.black, fontSize: 18),
-            ),
+            _toggleIndex == 0
+                ? const Text(
+                    "Most Outgoing",
+                    style: TextStyle(color: Colors.black, fontSize: 18),
+                  )
+                : const Text(
+                    "Most Incoming",
+                    style: TextStyle(color: Colors.black, fontSize: 18),
+                  ),
             GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AllCalls()),
+                  MaterialPageRoute(
+                      builder: (context) => AllCalls(
+                            call_type: _toggleIndex,
+                            investigationId: widget.investigationId,
+                            investigationName: widget.investigationName,
+                          )),
                 );
               },
               child: Row(
@@ -88,24 +112,55 @@ class _CallsWidgetState extends State<CallsWidget> {
           ],
         ),
         SizedBox(
-          height: 10,
+          height: 20,
         ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 5),
-          child: SingleCall(WidgetType: 1, callType: 1),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 5),
-          child: SingleCall(WidgetType: 1, callType: 1),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 5),
-          child: SingleCall(WidgetType: 1, callType: 1),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 5),
-          child: SingleCall(WidgetType: 1, callType: 1),
-        ),
+        (widget.outgoing.length == 0 && _toggleIndex == 0) ||
+                (widget.incoming.length == 0 && _toggleIndex == 1)
+            ? Column(
+                children: [
+                  Container(
+                      height: 200,
+                      child: Lottie.asset(
+                        "assets/lottie/notfound.json",
+                        reverse: true,
+                      )),
+                  Text(
+                    "No data found",
+                  )
+                ],
+              )
+            : LayoutBuilder(builder: (context, constraints) {
+                return Column(
+                  children: [
+                    Column(
+                        children: List.generate(
+                      _toggleIndex == 0
+                          ? widget.outgoing.length > 5
+                              ? 5
+                              : widget.outgoing.length
+                          : widget.incoming.length > 5
+                              ? 5
+                              : widget.incoming.length,
+                      (index) => Padding(
+                          padding: const EdgeInsets.only(bottom: 5),
+                          child: SingleCall(
+                            WidgetType: 1,
+                            callType: _toggleIndex,
+                            number: _toggleIndex == 0
+                                ? widget.outgoing[index]['receiver']
+                                : widget.incoming[index]['receiver'],
+                            count: _toggleIndex == 0
+                                ? widget.outgoing[index]['count']
+                                : widget.incoming[index]['count'],
+                            duration: _toggleIndex == 0
+                                ? widget.outgoing[index]['duration']
+                                : widget.incoming[index]['duration'],
+                            date_time: "",
+                          )),
+                    ))
+                  ],
+                );
+              }),
       ],
     );
   }
