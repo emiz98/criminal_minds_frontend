@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_police_app/pages/recent_investigations.dart';
 import 'package:flutter_police_app/pages/search.dart';
 
 class AppHeader extends StatelessWidget {
   final String title;
   final bool includeSearch;
+  final bool goToInvestigations;
 
-  const AppHeader({Key? key, required this.title, required this.includeSearch})
+  const AppHeader(
+      {Key? key,
+      required this.title,
+      required this.includeSearch,
+      required this.goToInvestigations})
       : super(key: key);
 
   @override
@@ -17,7 +23,13 @@ class AppHeader extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: GestureDetector(
             onTap: () {
-              Navigator.of(context).pop();
+              goToInvestigations
+                  ? Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RecentInvestigations()),
+                    )
+                  : Navigator.of(context).pop();
             },
             child: Icon(
               Icons.arrow_back,
@@ -41,21 +53,21 @@ class AppHeader extends StatelessWidget {
               ),
           ],
         ),
-        if (includeSearch == true)
-          Align(
-              alignment: Alignment.centerRight,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Search()),
-                  );
-                },
-                child: Icon(
-                  Icons.search,
-                  size: 30,
-                ),
-              ))
+        // if (includeSearch == true)
+        //   Align(
+        //       alignment: Alignment.centerRight,
+        //       child: GestureDetector(
+        //         onTap: () {
+        //           Navigator.push(
+        //             context,
+        //             MaterialPageRoute(builder: (context) => Search()),
+        //           );
+        //         },
+        //         child: Icon(
+        //           Icons.search,
+        //           size: 30,
+        //         ),
+        //       ))
       ],
     );
   }

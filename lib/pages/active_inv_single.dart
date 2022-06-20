@@ -25,8 +25,12 @@ class _ActiveInvSingleState extends State<ActiveInvSingle> {
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
             child: Column(
               children: [
-                AppHeader(title: "New Investigation", includeSearch: true),
-                SizedBox(
+                AppHeader(
+                  title: "New Investigation",
+                  includeSearch: true,
+                  goToInvestigations: false,
+                ),
+                const SizedBox(
                   height: 30,
                 ),
                 Row(
@@ -39,10 +43,15 @@ class _ActiveInvSingleState extends State<ActiveInvSingle> {
                     UserWidget(networkId: 2, number: "076 544 6548"),
                   ],
                 ),
-                SizedBox(
-                  height: 60,
+                const SizedBox(
+                  height: 30,
                 ),
-                CallsWidget()
+                CallsWidget(
+                  investigationName: "",
+                  investigationId: 1.toString(),
+                  outgoing: [],
+                  incoming: [],
+                )
               ],
             ),
           ),

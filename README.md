@@ -1,16 +1,13 @@
-# flutter_police_app
+# Criminal Minds
 
-A new Flutter project.
+![alt text](https://github.com/emiz98/criminal_minds/blob/master/readme.png?raw=true)
 
-## Getting Started
+Criminal Minds is an mobile application that helps local police to carry out investigations on suspicious person of interests. This is the frontend mobile application which created using flutter.
 
-This project is a starting point for a Flutter application.
+### Create using Flutter
 
-A few resources to get you started if this is your first Flutter project:
+![alt text](https://teamq.biz/wp-content/uploads/2020/04/flutter-logo-sharing-1.png)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+##### Documentation
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://docs.flutter.dev/

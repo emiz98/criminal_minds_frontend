@@ -1,8 +1,7 @@
 // ignore_for_file: camel_case_types
 
-import 'package:drop_shadow_image/drop_shadow_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_police_app/pages/login/login_splash.dart';
+import 'package:flutter_police_app/pages/login_splash.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -58,25 +57,17 @@ class splash_body extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: <Widget>[
-        DropShadowImage(
-          image: Image.asset(
-            'assets/images/1.png',
-            width: size.width * 0.7,
-            height: size.height * 0.7,
-          ),
-          borderRadius: 5,
-          blurRadius: 5,
-          offset: const Offset(2, 2),
+        Image.asset(
+          'assets/images/1.png',
+          width: size.width * 0.7,
+          height: size.height * 0.7,
         ),
-        ColorFiltered(
-          colorFilter: const ColorFilter.mode(Colors.white, BlendMode.modulate),
-          child: Opacity(
-            opacity: 0.3,
-            child: Image.asset(
-              'assets/images/shield.png',
-              width: size.width * 0.35,
-              height: size.height * 0.35,
-            ),
+        Opacity(
+          opacity: 0.15,
+          child: Image.asset(
+            'assets/images/shield.png',
+            width: size.width * 0.35,
+            height: size.height * 0.35,
           ),
         ),
       ],

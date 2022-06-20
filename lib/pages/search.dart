@@ -26,7 +26,10 @@ class _SearchState extends State<Search> {
               padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
               child: Column(
                 children: [
-                  AppHeader(title: "New Investigation", includeSearch: true),
+                  AppHeader(
+                      title: "New Investigation",
+                      includeSearch: true,
+                      goToInvestigations: false),
                   SizedBox(
                     height: 40,
                   ),

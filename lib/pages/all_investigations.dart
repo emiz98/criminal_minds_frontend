@@ -5,7 +5,9 @@ import 'package:flutter_police_app/widgets/SortWidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AllInvestigations extends StatelessWidget {
-  const AllInvestigations({Key? key}) : super(key: key);
+  final List investigations;
+  const AllInvestigations({Key? key, required this.investigations})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +21,11 @@ class AllInvestigations extends StatelessWidget {
             child: Column(
               children: [
                 AppHeader(
-                  title: "All Investigations",
-                  includeSearch: false,
-                ),
+                    title: "All Investigations",
+                    includeSearch: false,
+                    goToInvestigations: false),
                 const SizedBox(
                   height: 30,
-                ),
-                Row(
-                  children: [
-                    SortWidget(
-                        text1: "Name", text2: "Network", text3: "Date & Time"),
-                  ],
                 ),
                 const SizedBox(
                   height: 30,
@@ -38,68 +34,14 @@ class AllInvestigations extends StatelessWidget {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(
-                      children: [
-                        SingleInvestigationWidget(
-                            title: "Investigation 1",
-                            network: 1,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                        SingleInvestigationWidget(
-                            title: "Investigation 2",
-                            network: 2,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                        SingleInvestigationWidget(
-                            title: "Investigation 3",
-                            network: 3,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                        SingleInvestigationWidget(
-                            title: "Investigation 4",
-                            network: 4,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                        SingleInvestigationWidget(
-                            title: "Investigation 1",
-                            network: 1,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                        SingleInvestigationWidget(
-                            title: "Investigation 2",
-                            network: 2,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                        SingleInvestigationWidget(
-                            title: "Investigation 3",
-                            network: 3,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                        SingleInvestigationWidget(
-                            title: "Investigation 4",
-                            network: 4,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                        SingleInvestigationWidget(
-                            title: "Investigation 1",
-                            network: 1,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                        SingleInvestigationWidget(
-                            title: "Investigation 2",
-                            network: 2,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                        SingleInvestigationWidget(
-                            title: "Investigation 3",
-                            network: 3,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                        SingleInvestigationWidget(
-                            title: "Investigation 4",
-                            network: 4,
-                            date: "21-12-2021",
-                            time: "11.25 P.M."),
-                      ],
+                      children: List.generate(
+                          investigations.length,
+                          (index) => SingleInvestigationWidget(
+                              inv_id: investigations[index]['id'],
+                              title: investigations[index]['name'],
+                              network: investigations[index]['network'],
+                              date: investigations[index]['created_at'],
+                              time: "11.25 P.M.")),
                     ),
                   ),
                 )
