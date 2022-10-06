@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_police_app/json/colors_json.dart';
 import 'package:flutter_police_app/pages/all_calls.dart';
@@ -114,11 +116,11 @@ class _CallsWidgetState extends State<CallsWidget> {
         SizedBox(
           height: 20,
         ),
-        (widget.outgoing.length == 0 && _toggleIndex == 0) ||
-                (widget.incoming.length == 0 && _toggleIndex == 1)
+        (widget.outgoing.isEmpty && _toggleIndex == 0) ||
+                (widget.incoming.isEmpty && _toggleIndex == 1)
             ? Column(
                 children: [
-                  Container(
+                  SizedBox(
                       height: 200,
                       child: Lottie.asset(
                         "assets/lottie/notfound.json",

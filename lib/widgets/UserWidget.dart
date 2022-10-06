@@ -20,15 +20,15 @@ class UserWidget extends StatelessWidget {
                   Image.asset(
                     'assets/images/mobitel_logo.png',
                   ),
-                if (networkId == 1)
+                if (networkId == 3)
                   Image.asset(
                     'assets/images/dialog_logo.png',
                   ),
-                if (networkId == 2)
+                if (networkId == 1)
                   Image.asset(
                     'assets/images/airtel_logo.png',
                   ),
-                if (networkId == 3)
+                if (networkId == 2)
                   Image.asset(
                     'assets/images/hutch_logo.png',
                   ),
@@ -38,7 +38,7 @@ class UserWidget extends StatelessWidget {
           height: 10,
         ),
         Text(
-          number,
+          double.parse(number).round().toString(),
           style: TextStyle(
               fontSize: 18, fontWeight: FontWeight.bold, color: black),
         )

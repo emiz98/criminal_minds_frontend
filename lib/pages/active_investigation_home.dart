@@ -42,7 +42,6 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
       Map<String, dynamic> investigationDataDecode = json.decode(response.body);
       investigationData = investigationDataDecode;
       loading = false;
-      print(investigationData['investigation']['network']);
     });
   }
 
@@ -58,7 +57,7 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
     setState(() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => RecentInvestigations()),
+        MaterialPageRoute(builder: (context) => const RecentInvestigations()),
       );
       deleting = false;
     });
@@ -69,7 +68,8 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: DefaultTextStyle(
-          style: GoogleFonts.montserrat(textStyle: TextStyle(color: black)),
+          style:
+              GoogleFonts.montserrat(textStyle: const TextStyle(color: black)),
           child: loading
               ? Container(
                   color: white,
@@ -86,7 +86,7 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Lottie.asset("assets/lottie/delete.json"),
-                          Text("Deleting investigation please wait!")
+                          const Text("Deleting investigation please wait!")
                         ],
                       ),
                     )
@@ -95,7 +95,8 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RecentInvestigations()),
+                              builder: (context) =>
+                                  const RecentInvestigations()),
                         );
                         return false;
                       },
@@ -103,7 +104,7 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                         color: white,
                         child: deleteToggle
                             ? CupertinoAlertDialog(
-                                title: Text("Delete Investigation"),
+                                title: const Text("Delete Investigation"),
                                 content: Text(
                                     "Do you want to delete current investigation '" +
                                         investigationData['investigation']
@@ -111,14 +112,14 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                                         "' ?"),
                                 actions: [
                                   CupertinoDialogAction(
-                                      child: Text("No"),
+                                      child: const Text("No"),
                                       onPressed: () {
                                         setState(() {
                                           deleteToggle = false;
                                         });
                                       }),
                                   CupertinoDialogAction(
-                                      child: Text("Yes"),
+                                      child: const Text("Yes"),
                                       onPressed: () => DeleteInvestigation())
                                 ],
                               )
@@ -135,7 +136,7 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                                           deleteToggle = true;
                                         });
                                       },
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.delete,
                                         size: 30,
                                         color: Colors.red,
@@ -150,7 +151,7 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                                                   ['name'],
                                           includeSearch: true,
                                           goToInvestigations: true),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 50,
                                       ),
                                       UserWidget(
@@ -159,7 +160,7 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                                                   ['network'],
                                           number:
                                               investigationData['trackingNo']),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 50,
                                       ),
                                       Row(
@@ -172,18 +173,18 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Icon(
+                                              const Icon(
                                                 Icons.mobile_friendly_outlined,
                                                 size: 30,
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 width: 5,
                                               ),
                                               Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     "IMEI",
                                                     style: TextStyle(
                                                         fontSize: 18,
@@ -205,18 +206,18 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Icon(
+                                              const Icon(
                                                 Icons.sim_card_outlined,
                                                 size: 30,
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 width: 5,
                                               ),
                                               Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     "IMSI",
                                                     style: TextStyle(
                                                         fontSize: 18,
@@ -224,8 +225,12 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                                                             FontWeight.bold),
                                                   ),
                                                   Text(
-                                                    investigationData['imsi']
-                                                        .toString(),
+                                                    investigationData['imsi'] ==
+                                                            0
+                                                        ? "Not Available"
+                                                        : investigationData[
+                                                                'imsi']
+                                                            .toString(),
                                                     style: TextStyle(
                                                         color: black
                                                             .withOpacity(0.6)),
@@ -236,7 +241,7 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                                           )
                                         ],
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 50,
                                       ),
                                       CallsWidget(

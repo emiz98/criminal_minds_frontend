@@ -55,7 +55,9 @@ class _NewInvestigationState extends State<NewInvestigation> {
                     )),
           );
         } else {
-          print(res);
+          setState(() {
+            _isInvestigating = false;
+          });
         }
       }
     } catch (e) {
@@ -112,34 +114,29 @@ class _NewInvestigationState extends State<NewInvestigation> {
                               includeSearch: false,
                               goToInvestigations: true),
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ToggleSwitch(
-                                initialLabelIndex: 0,
+                                initialLabelIndex: network,
                                 cornerRadius: 20.0,
                                 activeBgColor: [primary],
                                 borderColor: [black.withOpacity(0.3)],
                                 borderWidth: 1.0,
                                 inactiveBgColor: white,
                                 customWidths: [
-                                  size.width / 4 - 12,
-                                  size.width / 4 - 12,
-                                  size.width / 4 - 12,
-                                  size.width / 4 - 12
+                                  size.width / 4,
+                                  size.width / 4,
+                                  size.width / 4,
                                 ],
-                                totalSwitches: 4,
-                                labels: [
-                                  "Mobitel",
-                                  "Dialog",
-                                  "Airtel",
-                                  "Hutch"
-                                ],
+                                totalSwitches: 3,
+                                labels: ["Mobitel", "Airtel", "Hutch"],
                                 radiusStyle: true,
                                 onToggle: (index) {
                                   network = index!;
                                 },
                               ),
                               const SizedBox(
-                                height: 30,
+                                height: 20,
                               ),
                               TextField(
                                   controller: inputController,

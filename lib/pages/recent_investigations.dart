@@ -12,7 +12,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 
 class RecentInvestigations extends StatefulWidget {
   const RecentInvestigations({Key? key}) : super(key: key);
@@ -47,8 +46,7 @@ class _RecentInvestigationsState extends State<RecentInvestigations> {
   }
 
   logout() async {
-    final prefs = await SharedPreferences.getInstance();
-    final success = await prefs.remove('token');
+    await deleteToken();
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => Login_Splash()),
