@@ -1,11 +1,15 @@
 // ignore_for_file: unused_import
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_police_app/pages/WidgetTree.dart';
+import 'package:flutter_police_app/pages/login_splash.dart';
 import 'package:flutter_police_app/pages/recent_investigations.dart';
-import 'package:flutter_police_app/pages/splash.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,17 +21,12 @@ class MyApp extends StatelessWidget {
       title: 'Criminal Minds',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.light,
-      ),
-      home: SafeArea(
-        child: DefaultTextStyle(
-          style: GoogleFonts.montserrat(
-              textStyle: const TextStyle(color: Colors.white)),
-          child: Container(
-            color: Colors.white,
-            child: const Splash(),
-          ),
-        ),
+          brightness: Brightness.light,
+          textTheme: GoogleFonts.montserratTextTheme(
+            Theme.of(context).textTheme,
+          )),
+      home: Scaffold(
+        body: WidgetTree(),
       ),
     );
   }

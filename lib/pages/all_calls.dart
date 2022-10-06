@@ -55,6 +55,10 @@ class _AllCallsState extends State<AllCalls> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    ScrollController _scrollController = new ScrollController(
+      initialScrollOffset: 0.0,
+      keepScrollOffset: true,
+    );
     return SafeArea(
       child: DefaultTextStyle(
         style: GoogleFonts.montserrat(textStyle: TextStyle(color: black)),
@@ -98,6 +102,9 @@ class _AllCallsState extends State<AllCalls> {
                     onToggle: (index) {
                       setState(() {
                         _toggleIndex = index!;
+                        _scrollController.animateTo(0,
+                            duration: Duration(milliseconds: 500),
+                            curve: Curves.ease);
                       });
                     },
                   ),
@@ -107,6 +114,7 @@ class _AllCallsState extends State<AllCalls> {
                   if (_toggleIndex == 0 && !loading) ...[
                     Expanded(
                       child: SingleChildScrollView(
+                        controller: _scrollController,
                         scrollDirection: Axis.vertical,
                         child: Column(
                           children: List.generate(
@@ -131,6 +139,7 @@ class _AllCallsState extends State<AllCalls> {
                   ] else if (_toggleIndex == 1 && !loading) ...[
                     Expanded(
                       child: SingleChildScrollView(
+                        controller: _scrollController,
                         scrollDirection: Axis.vertical,
                         child: Column(
                           children: List.generate(
@@ -155,6 +164,7 @@ class _AllCallsState extends State<AllCalls> {
                   ] else if (_toggleIndex == 2 && !loading) ...[
                     Expanded(
                       child: SingleChildScrollView(
+                        controller: _scrollController,
                         scrollDirection: Axis.vertical,
                         child: Column(
                           children: List.generate(

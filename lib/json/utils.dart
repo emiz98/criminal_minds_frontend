@@ -1,8 +1,10 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-const BASE_URL = 'https://criminalminds.herokuapp.com/';
-const API_URL = 'https://criminalminds.herokuapp.com/api/';
+const BASE_URL = 'http://192.168.1.32:8000/';
+const API_URL = 'http://192.168.1.32:8000/api/';
+// const BASE_URL = 'https://criminalminds.herokuapp.com/';
+// const API_URL = 'https://criminalminds.herokuapp.com/api/';
 
 const getInvestigations = API_URL + 'get_investigations';
 const postInvestigation = API_URL + 'create_investigation';
@@ -28,8 +30,17 @@ Future<bool> onBackPrevent() async {
   }
 }
 
+final storage = FlutterSecureStorage();
 getToken() async {
-  final prefs = await SharedPreferences.getInstance();
-  final String? token = prefs.getString('token');
-  return token;
+  String _token = (await storage.read(key: 'jwt'))!;
+  return _token;
+}
+
+deleteToken() async {
+  try {
+    await storage.delete(key: 'jwt');
+    return true;
+  } catch (e) {
+    return e;
+  }
 }

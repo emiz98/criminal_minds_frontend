@@ -15,21 +15,6 @@ class Login_Splash extends StatefulWidget {
 
 class _Login_SplashState extends State<Login_Splash> {
   @override
-  void initState() {
-    loadData();
-  }
-
-  loadData() async {
-    final token = await getToken();
-    if (token != null) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => RecentInvestigations()),
-      );
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SafeArea(

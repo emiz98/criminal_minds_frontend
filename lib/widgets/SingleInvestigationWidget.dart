@@ -129,19 +129,19 @@ class SingleInvestigationWidget extends StatelessWidget {
                           child: Image.asset(
                             'assets/images/mobitel_logo.png',
                           )),
-                    if (network == 1)
+                    if (network == 3)
                       Container(
                           height: 30,
                           child: Image.asset(
                             'assets/images/dialog_logo.png',
                           )),
-                    if (network == 2)
+                    if (network == 1)
                       Container(
                           height: 30,
                           child: Image.asset(
                             'assets/images/airtel_logo.png',
                           )),
-                    if (network == 3)
+                    if (network == 2)
                       Container(
                           height: 30,
                           child: Image.asset(

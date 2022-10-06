@@ -33,6 +33,12 @@ class SingleCall extends StatefulWidget {
 class _SingleCallState extends State<SingleCall> {
   @override
   Widget build(BuildContext context) {
+    var time = Duration(seconds: widget.duration).toString().split(':');
+    var formattedTime = int.parse(time[0]) != 0
+        ? time[0] + "h " + time[1] + "m " + time[2].split('.')[0] + "s)"
+        : int.parse(time[1]) != 0
+            ? time[1] + "m " + time[2].split('.')[0] + "s)"
+            : time[2].split('.')[0] + "s)";
     return GestureDetector(
       onTap: () {},
       child: Container(
@@ -52,11 +58,12 @@ class _SingleCallState extends State<SingleCall> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (widget.WidgetType == 1)
+                  if (widget.WidgetType == 1 || widget.WidgetType == 2)
                     Container(
-                      width: 25,
-                      height: 25,
+                      width: 40,
+                      height: 40,
                       alignment: Alignment.center,
+                      padding: EdgeInsets.all(2),
                       child: Text(
                         widget.count.toString(),
                         style: TextStyle(
@@ -67,10 +74,13 @@ class _SingleCallState extends State<SingleCall> {
                       decoration: BoxDecoration(
                           border: Border.all(
                               color: widget.callType == 0 ? outgoing : incoming,
-                              width: 2),
+                              width: 3),
                           color: white,
                           shape: BoxShape.circle),
                     ),
+                  SizedBox(
+                    width: 5,
+                  ),
                   Icon(
                     widget.callType == 0
                         ? Icons.call_missed_outgoing
@@ -101,17 +111,7 @@ class _SingleCallState extends State<SingleCall> {
                             Text("Total Duration (",
                                 style:
                                     TextStyle(color: secondary, fontSize: 12)),
-                            Text(
-                                widget.duration > 60
-                                    ? (widget.duration / 60)
-                                            .round()
-                                            .toString() +
-                                        "m " +
-                                        (widget.duration % 60)
-                                            .round()
-                                            .toString() +
-                                        "s)"
-                                    : widget.duration.toString() + "s)",
+                            Text(formattedTime,
                                 style:
                                     TextStyle(color: secondary, fontSize: 12))
                           ],
@@ -128,17 +128,7 @@ class _SingleCallState extends State<SingleCall> {
                             Text("Duration (",
                                 style:
                                     TextStyle(color: secondary, fontSize: 12)),
-                            Text(
-                                widget.duration > 60
-                                    ? (widget.duration / 60)
-                                            .round()
-                                            .toString() +
-                                        "m " +
-                                        (widget.duration % 60)
-                                            .round()
-                                            .toString() +
-                                        "s)"
-                                    : widget.duration.toString() + "s)",
+                            Text(formattedTime,
                                 style:
                                     TextStyle(color: secondary, fontSize: 12))
                           ],

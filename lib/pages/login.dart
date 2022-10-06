@@ -6,10 +6,10 @@ import 'package:flutter_police_app/json/colors_json.dart';
 import 'package:flutter_police_app/json/utils.dart';
 import 'package:flutter_police_app/pages/recent_investigations.dart';
 import 'package:flutter_police_app/widgets/AppHeader.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:lottie/lottie.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -41,15 +41,14 @@ class _LogInState extends State<LogIn> {
       setState(() {
         authenticating = true;
       });
-      final prefs = await SharedPreferences.getInstance();
       final response = await http.post(Uri.parse(authenticateUser), body: {
         "username": usernameController.text,
         "password": passwordController.text
       });
       var responseDecode = json.decode(response.body);
       if (response.statusCode == 200) {
-        await prefs.setString('token', responseDecode['token']);
-        final String? token = prefs.getString('token');
+        final storage = new FlutterSecureStorage();
+        await storage.write(key: 'jwt', value: responseDecode['token']);
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => RecentInvestigations()),
