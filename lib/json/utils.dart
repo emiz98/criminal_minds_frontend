@@ -1,20 +1,19 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-const BASE_URL = 'http://192.168.1.32:8000/';
-const API_URL = 'http://192.168.1.32:8000/api/';
-// const BASE_URL = 'https://criminalminds.herokuapp.com/';
-// const API_URL = 'https://criminalminds.herokuapp.com/api/';
+const baseURL = 'http://192.168.1.32:8000/';
+const apiURL = 'http://192.168.1.32:8000/api/';
+// const baseURL = 'https://criminalminds.herokuapp.com/';
+// const apiURL = 'https://criminalminds.herokuapp.com/api/';
 
-const getInvestigations = API_URL + 'get_investigations';
-const postInvestigation = API_URL + 'create_investigation';
-const deleteInvestigation = API_URL + 'delete_investigation/';
+const getInvestigations = apiURL + 'get_investigations';
+const postInvestigation = apiURL + 'create_investigation';
+const deleteInvestigation = apiURL + 'delete_investigation/';
 
-const getInvestigationData = API_URL + 'get_investigation_data/';
-const getInvestigationDataAdditional =
-    API_URL + 'get_investigation_additional/';
+const getInvestigationData = apiURL + 'get_investigation_data/';
+const getInvestigationDataAdditional = apiURL + 'get_investigation_additional/';
 
-const authenticateUser = BASE_URL + "api-token-auth/";
+const authenticateUser = baseURL + "api-token-auth/";
 
 Future<bool> onBackPrevent() async {
   DateTime timeBackPressed = DateTime.now();

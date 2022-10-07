@@ -103,7 +103,7 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                       child: Container(
                         color: white,
                         child: deleteToggle
-                            ? CupertinoAlertDialog(
+                            ? AlertDialog(
                                 title: const Text("Delete Investigation"),
                                 content: Text(
                                     "Do you want to delete current investigation '" +
@@ -111,16 +111,24 @@ class _ActiveInvestigationHomeState extends State<ActiveInvestigationHome> {
                                             ['name'] +
                                         "' ?"),
                                 actions: [
-                                  CupertinoDialogAction(
-                                      child: const Text("No"),
-                                      onPressed: () {
-                                        setState(() {
-                                          deleteToggle = false;
-                                        });
-                                      }),
-                                  CupertinoDialogAction(
-                                      child: const Text("Yes"),
-                                      onPressed: () => DeleteInvestigation())
+                                  TextButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        deleteToggle = false;
+                                      });
+                                    },
+                                    child: Text("No",
+                                        style: TextStyle(color: secondary)),
+                                  ),
+                                  TextButton(
+                                    onPressed: () => DeleteInvestigation(),
+                                    child: Container(
+                                      color: primary,
+                                      padding: EdgeInsets.all(10),
+                                      child: Text("Delete now",
+                                          style: TextStyle(color: white)),
+                                    ),
+                                  ),
                                 ],
                               )
                             : Padding(
