@@ -26,9 +26,6 @@ class AllInvestigations extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
                 Expanded(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,

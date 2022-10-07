@@ -66,21 +66,45 @@ class _RecentInvestigationsState extends State<RecentInvestigations> {
           child: Container(
             color: white,
             child: logoutToggle
-                ? CupertinoAlertDialog(
+                ? AlertDialog(
                     title: Text("Sign Out"),
                     content: Text("Do you really want to sign out?"),
                     actions: [
-                      CupertinoDialogAction(
-                          child: Text("No"),
-                          onPressed: () {
-                            setState(() {
-                              logoutToggle = false;
-                            });
-                          }),
-                      CupertinoDialogAction(
-                          child: Text("Yes"), onPressed: () => logout())
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            logoutToggle = false;
+                          });
+                        },
+                        child: Text("No", style: TextStyle(color: secondary)),
+                      ),
+                      TextButton(
+                        onPressed: () => logout(),
+                        child: Container(
+                          color: primary,
+                          padding: EdgeInsets.all(10),
+                          child:
+                              Text("Sign out", style: TextStyle(color: white)),
+                        ),
+                      ),
                     ],
                   )
+
+                // CupertinoAlertDialog(
+                //     title: Text("Sign Out"),
+                //     content: Text("Do you really want to sign out?"),
+                //     actions: [
+                //       CupertinoDialogAction(
+                //           child: Text("No"),
+                //           onPressed: () {
+                //             setState(() {
+                //               logoutToggle = false;
+                //             });
+                //           }),
+                //       CupertinoDialogAction(
+                //           child: Text("Yes"), onPressed: () => logout())
+                //     ],
+                //   )
                 : Padding(
                     padding:
                         const EdgeInsets.only(left: 20, right: 20, top: 20),

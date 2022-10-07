@@ -76,22 +76,35 @@ class _LogInState extends State<LogIn> {
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: _login_error
-                  ? CupertinoAlertDialog(
+                  ? AlertDialog(
                       title: Container(
                         height: 60,
                         child: Center(
                             child: Lottie.asset("assets/lottie/error.json",
                                 reverse: true)),
                       ),
-                      content: Text("Username or Password is not correct"),
+                      content: Text(
+                        "Username or Password is not correct",
+                        textAlign: TextAlign.center,
+                      ),
                       actions: [
-                        CupertinoDialogAction(
-                            child: Text("Okay"),
-                            onPressed: () {
-                              setState(() {
-                                _login_error = false;
-                              });
-                            }),
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _login_error = false;
+                            });
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            color: primary,
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              "Okay",
+                              style: TextStyle(color: white),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
                       ],
                     )
                   : SizedBox(

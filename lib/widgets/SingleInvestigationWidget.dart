@@ -37,7 +37,7 @@ class SingleInvestigationWidget extends StatelessWidget {
         child: Container(
           height: 100,
           decoration: BoxDecoration(
-              border: Border.all(color: Colors.black26.withOpacity(0.2)),
+              border: Border.all(color: incoming.withOpacity(0.5)),
               color: black.withOpacity(0.1),
               // boxShadow: [
               //   BoxShadow(
